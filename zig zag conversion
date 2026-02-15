@@ -1,0 +1,20 @@
+class Solution {
+    public String convert(String s, int numRows) {
+         Map<Integer, StringBuilder> hashMap = new HashMap<>();
+        boolean increment = true;
+        int row = 0;
+        char[] chars = s.toCharArray();
+for (int i = 0; i < chars.length; i++) {
+            if (row == numRows) increment = false;
+            if (row == 1) increment = true;
+if (increment) row++; else row--;
+if (!hashMap.containsKey(row)) hashMap.put(row, new StringBuilder());
+            hashMap.get(row).append(chars[i]);
+        }
+StringBuilder result = new StringBuilder("");
+for (int j = 1; j <= hashMap.keySet().size(); j++) {
+            result.append(hashMap.get(j));
+        }
+return result.toString();
+}
+}
